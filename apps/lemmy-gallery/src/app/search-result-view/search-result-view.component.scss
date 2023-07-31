@@ -1,0 +1,58 @@
+:host {
+  overflow: auto;
+  height: 100%;
+}
+
+.search-result {
+  display: grid;
+
+  margin-bottom: 8px;
+
+  grid-template-rows: auto auto auto auto;
+  grid-template-columns: 60px auto;
+  grid-template-areas:
+    'icon title'
+    'icon actor'
+    'icon description'
+    'icon posts';
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  cursor: pointer;
+
+  background: #111;
+
+  &:hover {
+    background: #222;
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &__icon {
+    grid-area: icon;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: contain;
+  }
+
+  &__title {
+    grid-area: title;
+    font-weight: 600;
+  }
+
+  &__actor {
+    grid-area: actor;
+    font-weight: 500;
+    opacity: 0.8;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    grid-area: description;
+    margin-bottom: 8px;
+  }
+
+  &__post-count {
+    grid-area: posts;
+  }
+}

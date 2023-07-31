@@ -1,0 +1,89 @@
+{
+  "name": "lemmy-gallery",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "sourceRoot": "apps/lemmy-gallery/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/lemmy-gallery",
+        "index": "apps/lemmy-gallery/src/index.html",
+        "main": "apps/lemmy-gallery/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/lemmy-gallery/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/lemmy-gallery/src/favicon.ico",
+          "apps/lemmy-gallery/src/assets"
+        ],
+        "styles": ["apps/lemmy-gallery/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "lemmy-gallery:build:production"
+        },
+        "development": {
+          "browserTarget": "lemmy-gallery:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "lemmy-gallery:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/lemmy-gallery/tsconfig.spec.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/lemmy-gallery/src/favicon.ico",
+          "apps/lemmy-gallery/src/assets"
+        ],
+        "styles": ["apps/lemmy-gallery/src/styles.scss"],
+        "scripts": []
+      }
+    }
+  }
+}

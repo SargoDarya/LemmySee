@@ -1,0 +1,49 @@
+:host {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #111111;
+  padding: 10px;
+  box-sizing: border-box;
+
+  grid-template-rows: min-content auto min-content;
+  grid-template-columns: auto auto auto;
+  grid-template-areas:
+    '. t .'
+    'i i i'
+    'b b b';
+}
+
+.post-view__title {
+  grid-area: t;
+  text-align: center;
+  font-size: 16px;
+  padding: 4px;
+}
+
+.post-view__image {
+  grid-area: i;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.post-view__album-bar {
+  grid-area: b;
+  max-height: 100px;
+  justify-content: center;
+  display: flex;
+  padding: 8px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
+}
+
+.post-view__album-image {
+  height: 80px;
+  box-sizing: border-box;
+  margin: 2px;
+
+  &--active {
+    border: 2px solid white;
+  }
+}

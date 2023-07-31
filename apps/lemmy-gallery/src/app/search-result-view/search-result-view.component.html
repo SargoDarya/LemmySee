@@ -1,0 +1,21 @@
+<ng-container *ngIf="searchResults">
+  <div
+    *ngFor="let result of searchResults"
+    (click)="selectCommunity.next(result)"
+    class="search-result"
+  >
+    <img
+      *ngIf="result.community.icon"
+      [src]="result.community.icon"
+      class="search-result__icon"
+    />
+    <span class="search-result__title">{{ result.community.title }}</span>
+    <span class="search-result__actor">{{ result.community.actor_id }}</span>
+    <span class="search-result__description">{{
+      result.community.description
+    }}</span>
+    <span class="search-result__post-count"
+      >Posts: {{ result.counts.posts }}</span
+    >
+  </div>
+</ng-container>

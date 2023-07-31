@@ -1,0 +1,9 @@
+Sorting:
+<select
+  [formControl]="sortTypeControl"
+  (ngModelChange)="selectSortType.next(sortTypeControl.value!)"
+>
+  <option *ngFor="let option of sortTypeOptions" [value]="option">
+    {{ option }}
+  </option>
+</select>

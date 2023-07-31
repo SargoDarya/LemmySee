@@ -1,0 +1,23 @@
+<h4>My Communities</h4>
+
+<h5>Safe</h5>
+<ul class="community-list">
+  <li
+    class="community-list__item"
+    *ngFor="let community of safeCommunities"
+    (click)="selectCommunity.next(community)"
+  >
+    {{ community.community.title }}
+  </li>
+</ul>
+
+<h5>NSFW</h5>
+<ul class="community-list">
+  <li
+    class="community-list__item community-list__item--nsfw"
+    *ngFor="let community of nsfwCommunities"
+    (click)="selectCommunity.next(community)"
+  >
+    {{ community.community.title }}
+  </li>
+</ul>

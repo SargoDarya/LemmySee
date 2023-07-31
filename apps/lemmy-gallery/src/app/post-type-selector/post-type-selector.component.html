@@ -1,0 +1,9 @@
+Show posts:
+<select
+  [formControl]="postFilterControl"
+  (ngModelChange)="selectPostFilter.next(postFilterControl.value!)"
+>
+  <option *ngFor="let option of postFilterOptions" [value]="option">
+    {{ option }}
+  </option>
+</select>

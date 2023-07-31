@@ -1,0 +1,42 @@
+<ng-container *ngIf="post; else emptyView">
+  <div class="post-view__title">{{ post.post.name }}</div>
+  <img
+    class="post-view__image"
+    *ngIf="availableLinks[albumIndex].type === LinkType.Image"
+    [src]="availableLinks[albumIndex].src"
+  />
+  <video
+    *ngIf="availableLinks[albumIndex].type === LinkType.Video"
+    class="post-view__image"
+    [src]="availableLinks[albumIndex].src"
+    autoplay="autoplay"
+  ></video>
+  <iframe
+    *ngIf="availableLinks[albumIndex].type === LinkType.Frame"
+    class="post-view__image"
+    [src]="availableLinks[albumIndex].src"
+  ></iframe>
+
+  <div class="post-view__album-bar">
+    <ng-container *ngFor="let link of availableLinks; index as i">
+      <img
+        class="post-view__album-image"
+        *ngIf="availableLinks[albumIndex].type === LinkType.Image"
+        [src]="link.src"
+        [ngClass]="{
+          'post-view__album-image--active': i === albumIndex
+        }"
+      />
+      <span
+        class="post-view__album-image"
+        *ngIf="availableLinks[albumIndex].type !== LinkType.Image"
+      >
+        Video/Frame
+      </span>
+    </ng-container>
+  </div>
+</ng-container>
+
+<ng-template #emptyView>
+  <div class="post-view__empty">Select a community to view posts</div>
+</ng-template>

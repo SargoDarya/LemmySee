@@ -1,0 +1,8 @@
+<app-sort-type-selector
+  (selectSortType)="selectSortType.next($event)"
+></app-sort-type-selector>
+<app-post-type-selector
+  (selectPostFilter)="selectPostFilter.next($event)"
+></app-post-type-selector>
+
+<span>Post #{{ postIndex }}</span>

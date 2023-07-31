@@ -1,0 +1,13 @@
+<h4>Saved Posts</h4>
+<ul class="community-list">
+  <li class="community-list__item" (click)="showPosts.next(posts)">
+    All Posts
+  </li>
+  <li
+    class="community-list__item"
+    *ngFor="let community of communities"
+    (click)="showPosts.next(postsByCommunity[community])"
+  >
+    {{ community }}
+  </li>
+</ul>

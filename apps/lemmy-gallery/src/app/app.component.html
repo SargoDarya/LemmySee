@@ -1,0 +1,40 @@
+<div class="sidebar">
+  <h3>Lemmy See</h3>
+
+  <app-login *ngIf="!client.isLoggedIn" (login)="login($event)"></app-login>
+  <app-search (searchTerm)="updateSearchTerm($event)"></app-search>
+  <app-recent-communities
+    [communities]="(recentCommunities$ | async)!"
+    (selectCommunity)="selectCommunity($event)"
+  ></app-recent-communities>
+  <app-saved-posts
+    [posts]="(savedPosts$ | async)!"
+    (showPosts)="showSavedPosts($event)"
+  ></app-saved-posts>
+</div>
+
+<app-post-navigator
+  class="navigator"
+  [postIndex]="postIndex$ | async"
+  (navigate)="navigate($event)"
+  (selectSortType)="selectSortType($event)"
+  (selectPostFilter)="selectPostFilter($event)"
+></app-post-navigator>
+
+<ng-container
+  *ngIf="communitySearchResults$ | async as searchResults; else postView"
+>
+  <app-search-result-view
+    [searchResults]="searchResults"
+    (selectCommunity)="selectCommunity($event)"
+  ></app-search-result-view>
+</ng-container>
+
+<ng-template #postView>
+  <app-post-view
+    [post]="visiblePost$ | async"
+    (navigate)="navigate($event)"
+    (savePost)="savePost($event)"
+    (blockActor)="blockActor($event)"
+  ></app-post-view>
+</ng-template>

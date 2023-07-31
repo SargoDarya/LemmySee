@@ -1,0 +1,28 @@
+:host {
+  display: grid;
+  height: 100%;
+  overflow: hidden;
+
+  grid-template-rows: 30px auto;
+  grid-template-columns: 200px auto;
+  grid-template-areas:
+    'sidebar navigation'
+    'sidebar content';
+}
+
+.sidebar {
+  width: 200px;
+  grid-area: sidebar;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+}
+
+.navigator {
+  grid-area: navigation;
+}
+
+app-post-view {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  grid-area: content;
+}
